@@ -1,6 +1,7 @@
 import { terser } from 'rollup-plugin-terser';
 import sizes from 'rollup-plugin-sizes';
-import html from '@rollup/plugin-html';
+import htmlTemplate from 'rollup-plugin-generate-html-template';
+import html from "rollup-plugin-html";
 import babel from '@rollup/plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import commonJS from 'rollup-plugin-commonjs';  
@@ -16,6 +17,9 @@ export default [
       format: 'umd',
     },
     plugins: [
+        html({
+          include: '**/*.html',
+        }),
         sizes(), 
         babel({ babelHelpers: 'bundled' }), 
         terser(),
@@ -37,6 +41,9 @@ export default [
       { file: 'dist/module.js', format: 'es' },
     ],
     plugins: [
+        html({
+          include: '**/*.html',
+        }),
         sizes(), 
         babel({ babelHelpers: 'bundled' }),
         resolve(),
@@ -55,9 +62,15 @@ export default [
       format: 'umd',
     },
     plugins: [
+      html({
+        include: '**/*.html',
+      }),
       sizes(), 
       babel({ babelHelpers: 'bundled' }),
-      html(),
+      htmlTemplate({
+        template: 'src/template.html',
+        target: 'index.html',
+      }),
       resolve(),
       commonJS({
           include: 'node_modules/**'
