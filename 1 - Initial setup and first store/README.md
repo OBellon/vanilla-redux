@@ -1,13 +1,7 @@
 # Vanilla Redux 
 
-Clone the repository and then 
+## Initial setup and first store
 
-```
-npm ci
-```
+Head to the [Medium post](link) to know more of this introduction.
 
-```
-npm run dev
-```
-
-Open vanilla-redux-odigeo/dist/index.html (dev tools)
+Open a pull-request or issue in case you have a doubt and I will be more than happy to discuss it!
